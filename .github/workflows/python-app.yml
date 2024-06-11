@@ -1,6 +1,6 @@
 name: Run Tests
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   test:
@@ -9,20 +9,20 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: 3.x
 
+        
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y xvfb
         python -m pip install --upgrade pip
         pip install pytest pytest-qt PyQt5
 
     - name: Run tests with xvfb-run
       run: |
-        xvfb-run -a pytest tests/test.py
+        pytest test.py

@@ -19,8 +19,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y python3-pyqt5 xvfb
-        pip install pytest pytest-qt
+        sudo apt-get install -y python3-pyqt5
+        pip install pytest pytest-qt PyQt5
 
     - name: Run Tests
       run: python -m pytest tests/test.py

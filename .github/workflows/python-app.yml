@@ -1,31 +1,39 @@
-name: Run Tests
+name: PyQt5 Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
-    name: Python Tests
     runs-on: ubuntu-latest
 
+    services:
+      xvfb:
+        image: 'cirrusci/xvfb:latest'
+        options: '--privileged'
+
     steps:
-    - name: Checkout Repository
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.9
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y xvfb
-        python -m pip install --upgrade pip
-        pip install pytest pytest-qt PyQt5
+        sudo apt-get install -y python3-pyqt5 xvfb
+        pip install pytest pytest-qt
 
-    - name: Run Xvfb and tests
+    - name: Run tests
       run: |
-        sudo Xvfb :99 -screen 0 1024x768x24 &
-        export DISPLAY=:99
-        sleep 3 # Даем время на запуск Xvfb
-        pytest test.py
+        xvfb-run -a pytest
+      env:
+        DISPLAY: ':99.0'

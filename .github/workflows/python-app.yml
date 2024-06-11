@@ -18,16 +18,11 @@ jobs:
 
     - name: Install dependencies
       run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
         python -m pip install --upgrade pip
         pip install pytest pytest-qt PyQt5
 
-    - name: Install Xvfb
-      run: sudo apt-get install -y xvfb
-
-    - name: Run Xvfb and tests
+    - name: Run tests with xvfb-run
       run: |
-        sudo Xvfb :99 -screen 0 1024x768x24 &
-        export DISPLAY=:99
-        pytest tests/test.py
-
-
+        xvfb-run -a pytest tests/test.py

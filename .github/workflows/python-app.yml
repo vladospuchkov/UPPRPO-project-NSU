@@ -30,5 +30,4 @@ jobs:
         export DISPLAY=:99
         pytest tests/test.py
 
-    - name: Run tests
-      run: pytest tests/test.py
+

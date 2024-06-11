@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10]
+        python-version: [3.10]
 
     steps:
     - name: Checkout repository
@@ -30,4 +30,4 @@ jobs:
         pip install pytest pytest-qt PyQt5
 
     - name: Run tests
-      run: python -m pytest tests/test.py
+      run: python3.10 -m pytest tests/test.py

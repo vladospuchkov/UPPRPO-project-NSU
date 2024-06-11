@@ -22,4 +22,4 @@ jobs:
         pip install pytest pytest-qt PyQt5
 
     - name: Run tests
-      run: pytest stest.py
+      run: pytest test.py

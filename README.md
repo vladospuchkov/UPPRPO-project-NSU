@@ -16,6 +16,7 @@ Windows:
 Для обычных пользователей - файл MH_App.exe
 
 Linux (работает и в windows):
+
 Для продвинутых пользователей:
 * Python (v3.10 и выше)
 > pip install PyQt5

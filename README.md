@@ -20,4 +20,4 @@ Linux (работает и в windows):
 * Python (v3.10 и выше)
 * pip install PyQt5
 * с командной строки в той же директории:
-  >> python main.py
+  > python main.py
